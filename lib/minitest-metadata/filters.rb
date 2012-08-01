@@ -7,7 +7,7 @@ module MiniTest
       # returned.
       class Tags
         def initialize(*tags)
-          @tags = Array(tags).map(&:to_s)
+          @tags = Array(tags).flatten.map(&:to_s)
         end
 
         def apply(methods, suite)

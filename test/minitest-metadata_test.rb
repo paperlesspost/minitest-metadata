@@ -281,5 +281,43 @@ class MiniTestMetadataTest < MiniTest::Spec
         assert @methods.include? "test_0003_baz"
       end
     end
+
+    describe "when an empty array is passed" do
+      before do
+        parent = Class.new(MiniTest::Spec) do
+          include MiniTest::Metadata
+          filter { MiniTest::Metadata::Filters::Tags.new([]) }
+        end
+
+        suite = Class.new(parent) do
+          it "foo", :tags => :deep do
+            # empty
+          end
+
+          it "bar" do
+            # empty
+          end
+
+          it "baz", :tags => [:deep, :money] do
+            # empty
+          end
+
+          it "qux", :tags => :shallow do
+            # empty
+          end
+
+          self
+        end
+        @methods = suite.test_methods
+      end
+
+      it "returns all test methods defined" do
+        assert_equal 4, @methods.count
+        assert @methods.include? "test_0001_foo"
+        assert @methods.include? "test_0002_bar"
+        assert @methods.include? "test_0003_baz"
+        assert @methods.include? "test_0004_qux"
+      end
+    end
   end # "filters"
 end # MetadataTest
