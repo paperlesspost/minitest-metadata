@@ -1,5 +1,5 @@
 module MiniTest
   module Metadata
-    VERSION = "0.1.1.paperless"
+    VERSION = "0.1.2.paperless"
   end
 end
