@@ -167,9 +167,8 @@ class MiniTestMetadataTest < MiniTest::Spec
         @methods = suite.test_methods
       end
 
-      it "returns all test methods defined with either one of those tags" do
-        assert_equal 2, @methods.count
-        assert @methods.include? "test_0001_foo"
+      it "returns all test methods defined with both of those tags" do
+        assert_equal 1, @methods.count
         assert @methods.include? "test_0003_baz"
       end
     end
