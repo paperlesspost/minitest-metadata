@@ -1,12 +1,12 @@
 require "minitest-metadata/filters"
 require "minitest-metadata/version"
 
-module MiniTest
+module Minitest
   module Metadata
 
     # Returns the metadata for the currently running test.
     def metadata
-      self.class.metadata[__name__] || {}
+      self.class.metadata[name] || {}
     end
 
     def self.included(base)
@@ -20,24 +20,21 @@ module MiniTest
         @metadata ||= {}
       end
 
-      # Overridden method (MiniTest::Spec.it): modified to record the metadata
+      # Overridden method (Minitest::Spec.it): modified to record the metadata
       # for each test defined.
       def it(description = "anonymous", metadata = {}, &block)
         # Compares the methods defined before and after defining a test to get
         # the test's name.
-        old_methods = test_methods(:filtered => false)
-        super(description, &block).tap do
-          new_methods = test_methods(:filtered => false)
-          name = (new_methods - old_methods).first
-          self.metadata[name] = metadata
-        end
+        name = super(description, &block)
+        self.metadata[name] = metadata
+        name
       end
 
-      # Overridden method (MiniTest::Spec.test_methods): modified to return
+      # Overridden method (Minitest::Spec.test_methods): modified to return
       # the filtered test methods by default.
       def test_methods(options = {})
         filtered = true unless options[:filtered] == false
-        methods = super()
+        methods = all_test_methods
         return methods unless filtered && filters?
         # Delegate to the filter classes to apply themselves.
         apply_filters(methods)
@@ -67,6 +64,10 @@ module MiniTest
 
     private
 
+      def all_test_methods
+        self.public_instance_methods.grep(/^test_/).map(&:to_s)
+      end
+
       # Applies all added filters.
       def apply_filters(methods)
         filters.inject(methods) { |methods, filter| filter.apply(methods, self) }
@@ -81,4 +82,4 @@ module MiniTest
     end # ClassMethods
 
   end # Metadata
-end # MiniTest
+end # Minitest

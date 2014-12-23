@@ -1,13 +1,12 @@
-require "minitest/spec"
 require "minitest/autorun"
 require "minitest-metadata"
 
-class MiniTestMetadataTest < MiniTest::Spec
+class MinitestMetadataTest < Minitest::Spec
 
   describe "metadata" do
     before do
-      @parent = Class.new(MiniTest::Spec) do
-        include MiniTest::Metadata
+      @parent = Class.new(Minitest::Spec) do
+        include Minitest::Metadata
       end
     end
 
@@ -68,8 +67,8 @@ class MiniTestMetadataTest < MiniTest::Spec
   describe "filters" do
     describe "when none are applied" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
         end
 
         suite = Class.new(parent) do
@@ -105,9 +104,9 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when 1 is applied" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new(:money) }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new(:money) }
         end
 
         suite = Class.new(parent) do
@@ -140,9 +139,9 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when 1 is applied with 2 tags" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new(:deep, :money) }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new(:deep, :money) }
         end
 
         suite = Class.new(parent) do
@@ -175,10 +174,10 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when 2 are applied" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new(:deep) }
-          filter { MiniTest::Metadata::Filters::Tags.new(:money) }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new(:deep) }
+          filter { Minitest::Metadata::Filters::Tags.new(:money) }
         end
 
         suite = Class.new(parent) do
@@ -211,9 +210,9 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when a string is used" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new("deep") }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new("deep") }
         end
 
         suite = Class.new(parent) do
@@ -247,9 +246,9 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when a symbol is used" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new(:deep) }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new(:deep) }
         end
 
         suite = Class.new(parent) do
@@ -283,9 +282,9 @@ class MiniTestMetadataTest < MiniTest::Spec
 
     describe "when an empty array is passed" do
       before do
-        parent = Class.new(MiniTest::Spec) do
-          include MiniTest::Metadata
-          filter { MiniTest::Metadata::Filters::Tags.new([]) }
+        parent = Class.new(Minitest::Spec) do
+          include Minitest::Metadata
+          filter { Minitest::Metadata::Filters::Tags.new([]) }
         end
 
         suite = Class.new(parent) do

@@ -4,7 +4,7 @@ require "minitest-metadata/version"
 
 Gem::Specification.new do |s|
   s.name        = "minitest-metadata"
-  s.version     = MiniTest::Metadata::VERSION
+  s.version     = Minitest::Metadata::VERSION
   s.authors     = ["Wojciech Mach"]
   s.email       = ["wojtek@wojtekmach.pl"]
   s.homepage    = ""
@@ -19,5 +19,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency "rake"
-  s.add_development_dependency "minitest", "2.7.0"
+  s.add_development_dependency "minitest", "5.5.0"
 end

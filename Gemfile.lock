@@ -1,18 +1,18 @@
 PATH
   remote: .
   specs:
-    minitest-metadata (0.1.0)
+    minitest-metadata (0.1.2.paperless)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    minitest (2.7.0)
+    minitest (5.5.0)
     rake (0.9.2.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest (= 2.7.0)
+  minitest (= 5.5.0)
   minitest-metadata!
   rake

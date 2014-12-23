@@ -1,4 +1,4 @@
-module MiniTest
+module Minitest
   module Metadata
     module Filters
       # A tag filter. If no tags are provided, all methods are returned. If
@@ -42,4 +42,4 @@ module MiniTest
       end # Tags
     end # Filters
   end # Metadata
-end # MiniTest
+end # Minitest

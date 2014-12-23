@@ -23,7 +23,7 @@ use JavaScript driver
 
 
 ```ruby
-class AcceptanceTest < MiniTest::Spec
+class AcceptanceTest < Minitest::Spec
   include Capybara::DSL
 
   before do
