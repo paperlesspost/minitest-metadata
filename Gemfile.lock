@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    minitest-metadata (0.1.2.paperless)
+    minitest-metadata (0.1.2.paperless3)
 
 GEM
   remote: http://rubygems.org/

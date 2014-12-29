@@ -90,7 +90,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "returns all test methods defined" do
@@ -128,7 +128,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "returns all test methods defined with that tag" do
@@ -163,7 +163,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "returns all test methods defined with both of those tags" do
@@ -199,7 +199,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "returns all test methods defined with both of those tags" do
@@ -234,7 +234,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "should have no effect on the results" do
@@ -270,7 +270,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "should have no effect on the results" do
@@ -306,7 +306,7 @@ class MinitestMetadataTest < Minitest::Spec
 
           self
         end
-        @methods = suite.test_methods
+        @methods = suite.runnable_methods
       end
 
       it "returns all test methods defined" do

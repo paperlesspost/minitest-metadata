@@ -30,11 +30,11 @@ module Minitest
         name
       end
 
-      # Overridden method (Minitest::Spec.test_methods): modified to return
+      # Overridden method (Minitest::Spec.runnable_methods): modified to return
       # the filtered test methods by default.
-      def test_methods(options = {})
+      def runnable_methods(options = {})
         filtered = true unless options[:filtered] == false
-        methods = all_test_methods
+        methods = super()
         return methods unless filtered && filters?
         # Delegate to the filter classes to apply themselves.
         apply_filters(methods)
