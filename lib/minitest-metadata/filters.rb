@@ -1,6 +1,62 @@
 module Minitest
   module Metadata
     module Filters
+
+      VERSION = "0.0.1"
+
+      module ClassMethods
+
+        # Overridden method (Minitest::Spec.runnable_methods): modified to return
+        # the filtered test methods by default.
+        def runnable_methods(options = {})
+          filtered = true unless options[:filtered] == false
+          methods = super()
+          return methods unless filtered && filters?
+          # Delegate to the filter classes to apply themselves.
+          apply_filters(methods)
+        end
+
+        # Defines a inheritable filter. Must respond to the +apply+ method, with parameters
+        # +methods+ and +suite+.
+        def filter(&block)
+          filters = self.filters << yield
+          metaclass.send(:define_method, :_filters) do
+            filters
+          end
+        end
+
+        # Returns all added filters.
+        def filters
+          if metaclass.method_defined? :_filters
+            self._filters
+          else
+            []
+          end
+        end
+
+        def filters?
+          filters.any?
+        end
+
+        private
+
+        def all_test_methods
+          self.public_instance_methods.grep(/^test_/).map(&:to_s)
+        end
+
+        # Applies all added filters.
+        def apply_filters(methods)
+          filters.inject(methods) { |methods, filter| filter.apply(methods, self) }
+        end
+
+        def metaclass
+          class << self
+            self
+          end
+        end
+
+      end
+
       # A tag filter. If no tags are provided, all methods are returned. If
       # tags are provided, if a method has all of those tags, it's returned.
       class Tags
@@ -17,7 +73,7 @@ module Minitest
           end
         end
 
-      private
+        private
 
         # Forces tags to be a single-dimensional array of strings.
         def sanitize_tags(tags)
