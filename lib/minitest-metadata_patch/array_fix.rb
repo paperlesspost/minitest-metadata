@@ -2,12 +2,11 @@ module MinitestMetadataPatch
 
   module ArrayFix
 
-    def self.included(base)
-      base.send(:include, InstanceMethods)
-      base.send(:extend, ClassMethods)
-    end
-
     module InstanceMethods
+
+      def self.included(base)
+        base.send(:extend, MinitestMetadataPatch::ArrayFix::ClassMethods)
+      end
 
       # Returns the metadata for the currently running test.
       def metadata

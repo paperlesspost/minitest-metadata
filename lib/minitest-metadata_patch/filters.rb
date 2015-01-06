@@ -2,10 +2,6 @@ module MinitestMetadataPatch
 
   module Filters
 
-    def self.included(base)
-      base.send(:extend, ClassMethods)
-    end
-
     module ClassMethods
 
       # Overridden method (Minitest::Spec.runnable_methods): modified to return
