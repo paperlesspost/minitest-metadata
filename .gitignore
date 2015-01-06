@@ -1,6 +1,0 @@
-pkg
-bin
-.bundle
-.*.sw*
-.yardoc
-doc
