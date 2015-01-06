@@ -1,12 +1,15 @@
 PATH
   remote: .
   specs:
-    minitest-metadata (0.1.2.paperless3)
+    minitest-metadata-filters (0.0.1)
+      minitest-metadata (= 0.6.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
     minitest (5.5.0)
+    minitest-metadata (0.6.0)
+      minitest (>= 4.7, < 6.0)
     rake (0.9.2.2)
 
 PLATFORMS
@@ -14,5 +17,5 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (= 5.5.0)
-  minitest-metadata!
+  minitest-metadata-filters!
   rake
