@@ -4,10 +4,6 @@ module MinitestMetadataPatch
 
     module InstanceMethods
 
-      def self.included(base)
-        base.send(:extend, MinitestMetadataPatch::ArrayFix::ClassMethods)
-      end
-
       # Returns the metadata for the currently running test.
       def metadata
         self.class.metadata[name] || {}
