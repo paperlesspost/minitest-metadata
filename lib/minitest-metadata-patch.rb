@@ -1,7 +1,7 @@
 require "minitest-metadata"
 
-require "minitest-metadata_patch/array_fix"
-require "minitest-metadata_patch/filters"
+require "minitest-metadata-patch/array_fix"
+require "minitest-metadata-patch/filters"
 
 module MinitestMetadataPatch
 
