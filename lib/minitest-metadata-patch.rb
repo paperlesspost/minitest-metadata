@@ -7,7 +7,7 @@ module MinitestMetadataPatch
 
 end
 
-# Implement the patches
+# Activate the patches
 module Minitest
 
   module Metadata
