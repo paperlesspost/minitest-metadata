@@ -1,5 +1,3 @@
-require "minitest-metadata"
-
 require "minitest-metadata-patch/array_fix"
 require "minitest-metadata-patch/filters"
 
