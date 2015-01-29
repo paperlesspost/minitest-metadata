@@ -3,7 +3,7 @@ require "minitest-metadata-patch/filters"
 
 module MinitestMetadataPatch
 
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
 
 end
 
