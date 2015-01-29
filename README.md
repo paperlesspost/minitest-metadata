@@ -1,4 +1,4 @@
-minitest-metadata-filters
+minitest-metadata-patch
 =================
 
-Adds filters to minitest-metadata
+Adds filters/fixes to minitest-metadata
