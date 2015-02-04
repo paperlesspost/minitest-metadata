@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require "minitest-metadata"
+require "minitest-metadata-patch"
 
 class MinitestMetadataTest < Minitest::Spec
 
@@ -106,7 +106,7 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new(:money) }
+          filter { MinitestMetadataPatch::Filters::Tags.new(:money) }
         end
 
         suite = Class.new(parent) do
@@ -141,7 +141,7 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new(:deep, :money) }
+          filter { MinitestMetadataPatch::Filters::Tags.new(:deep, :money) }
         end
 
         suite = Class.new(parent) do
@@ -176,8 +176,8 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new(:deep) }
-          filter { Minitest::Metadata::Filters::Tags.new(:money) }
+          filter { MinitestMetadataPatch::Filters::Tags.new(:deep) }
+          filter { MinitestMetadataPatch::Filters::Tags.new(:money) }
         end
 
         suite = Class.new(parent) do
@@ -212,7 +212,7 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new("deep") }
+          filter { MinitestMetadataPatch::Filters::Tags.new("deep") }
         end
 
         suite = Class.new(parent) do
@@ -248,7 +248,7 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new(:deep) }
+          filter { MinitestMetadataPatch::Filters::Tags.new(:deep) }
         end
 
         suite = Class.new(parent) do
@@ -284,7 +284,7 @@ class MinitestMetadataTest < Minitest::Spec
       before do
         parent = Class.new(Minitest::Spec) do
           include Minitest::Metadata
-          filter { Minitest::Metadata::Filters::Tags.new([]) }
+          filter { MinitestMetadataPatch::Filters::Tags.new([]) }
         end
 
         suite = Class.new(parent) do
