@@ -2,7 +2,7 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "minitest-metadata"
+  s.name        = "minitest-metadata-patch"
   s.version     = "0.0.2"
   s.authors     = ["Wojciech Mach"]
   s.email       = ["wojtek@wojtekmach.pl"]
