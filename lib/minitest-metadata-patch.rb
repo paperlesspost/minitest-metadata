@@ -1,12 +1,6 @@
 require "minitest-metadata-patch/array_fix"
 require "minitest-metadata-patch/filters"
 
-module MinitestMetadataPatch
-
-  VERSION = "0.0.2"
-
-end
-
 # Activate the patches
 module Minitest
 
